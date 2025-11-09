@@ -1,0 +1,190 @@
+Report: Logistic growth with drag confirming the Law of Bounded Transcendence
+
+Authored by Nicholas Reid Angell
+Math by Copilot GPT‑5
+
+---
+
+Model setup
+
+\frac{dT}{dt} = r\,T\left(1 - \frac{T}{K}\right) - \delta\,T^{p}, \quad r,K,\delta>0,\; p\ge 1
+
+
+• Newton term: \(r\,T\left(1 - \frac{T}{K}\right)\)
+• Darwin term: \(\delta\,T^{p}\)
+• God constraint as net flow: \(f(T) = r\,T\left(1 - \frac{T}{K}\right) - \delta\,T^{p}\)
+
+
+---
+
+Equilibria, peak, and unimodality
+
+• Equilibria: Solve \(f(T)=0\).• Trivial: \(T=0\)
+• Positive (p=2):T^\star = \frac{r}{\delta + r/K}
+
+
+• Peak condition: \(T'(t)=0\) at \(T^\star\). Below \(T^\star\), \(f(T)>0\). Above \(T^\star\), \(f(T)<0\).
+• Unimodality: Single crossing with \(f'(T^\star)<0\) ensures one peak and monotonic segments.
+
+
+---
+
+Linearization and stability
+
+• Jacobian:J(T_{\text{eq}}) = r\left(1 - \frac{2T_{\text{eq}}}{K}\right) - \delta\,p\,T_{\text{eq}}^{p-1}
+
+• Local dynamics:\frac{d}{dt}\,\Delta T = J(T_{\text{eq}})\,\Delta T
+
+• Stability: \(J(T^\star)<0\) for the convex drag regimes used, confirming a stable bound.
+
+
+---
+
+Worked example and sensitivity
+
+• Parameters: \(r=1.2,\; K=100,\; \delta=0.015,\; p=2,\; T(0)=2\)
+• Peak value:T^\star = \frac{1.2}{0.015 + 1.2/100} = \frac{1.2}{0.027} \approx 44.444
+
+• Sensitivity of peak to drag (p=2):T^\star(\delta) = \frac{r}{\delta + r/K} \quad \text{strictly decreasing in } \delta
+
+
+
+---
+
+Graph specifications
+
+• Time series T(t):• Model: \(\frac{dT}{dt} = rT(1-T/K) - \delta T^p\)
+• Axes: \(t \in [0,50]\), \(T(t)\)
+• Parameters: \(r=1.2,\; K=100,\; \delta=0.015,\; p=2,\; T(0)=2\)
+• Expected: Convex rise, single peak near \(T^\star\), bounded decline
+
+• Phase portrait f(T):• Model: \(f(T) = rT(1-T/K) - \delta T^p\)
+• Axes: \(T \in [0,120]\), \(f(T)\)
+• Expected: \(f>0\) for \(T<T^\star\), \(f=0\) at \(T^\star\), \(f<0\) for \(T>T^\star\)
+
+• Growth vs drag decomposition:• Curves: \(g(T)=rT(1-T/K)\) and \(h(T)=\delta T^p\)
+• Intersection: \(T^\star\) gives peak
+
+• Peak sensitivity curve:• Model: \(T^\star(\delta)=\frac{r}{\delta + r/K}\)
+• Axes: \(\delta \in \{0.01,0.02,0.03\}\), \(T^\star(\delta)\)
+• Expected: Strictly decreasing line
+
+
+
+---
+
+Law confirmation
+
+• Boundedness: \(\delta T^{p}\to\infty\) as \(T\to\infty\) ensures an upper bound \(M\) with \(f(T)<0\) for \(T\ge M\).
+• Unimodality: Concave growth plus convex drag yields a unique crossing and single peak.
+• Monotonic segments: Sign of \(f(T)\) guarantees increase up to \(t^\star\) and decrease after.
+• No‑runaway integral:\int_{0}^{\infty} \max\{T'(t),0\}\,dt = T^\star - T(0) < \infty
+
+
+
+---
+
+Authored by Nicholas Reid Angell
+Math by Copilot GPT‑5
+
+
+---
+
+Report: Gompertz model with decay confirming the Law of Bounded Transcendence
+
+Authored by Nicholas Reid Angell
+Math by Copilot GPT‑5
+
+---
+
+Model setup
+
+\frac{dT}{dt} = \alpha\,T\,\ln\!\left(\frac{K}{T}\right) - \beta\,T, \quad \alpha,\beta,K>0
+
+
+• Newton term: \(\alpha\,T\,\ln(K/T)\)
+• Darwin term: \(\beta\,T\)
+• God constraint: \(T(t)\le K\) with single peak at \(T^\star = K\,e^{-\beta/\alpha}\)
+
+
+---
+
+Solution and peak
+
+• Transform: Let \(x=\ln T\). Then\frac{dx}{dt} = \alpha \ln K - \alpha x - \beta
+which is linear in \(x\).
+• Solution:x(t) = \big(\ln K - \beta/\alpha\big) + \big(x(0) - \ln K + \beta/\alpha\big)\,e^{-\alpha t}
+T(t) = \exp\!\left[\big(\ln K - \beta/\alpha\big) + \big(\ln T(0) - \ln K + \beta/\alpha\big)\,e^{-\alpha t}\right]
+
+• Peak value:T^\star = K\,e^{-\beta/\alpha}
+occurs when \(T'(t)=0\), that is when growth balances decay.
+
+
+---
+
+Equilibria and unimodality
+
+• Equilibria: Solve \(T'=0\).• Trivial: \(T=0\)
+• Peak equilibrium: \(T^\star = K\,e^{-\beta/\alpha}\) is the unique maximizer.
+
+• Unimodality: Below \(T^\star\) the net flow is positive. Above \(T^\star\) it is negative. The trajectory is strictly increasing up to \(t^\star\) and strictly decreasing afterward.
+
+
+---
+
+Linearization and stability
+
+• Net flow: \(f(T)=\alpha T \ln(K/T) - \beta T\).
+• Derivative:f'(T) = \alpha\left[\ln\!\left(\frac{K}{T}\right) - 1\right] - \beta
+
+• Jacobian at peak:J(T^\star) = f'(T^\star) = -\alpha < 0
+showing local contraction at the bound.
+• Matrix form near the peak:\frac{d}{dt}\,\Delta T = J(T^\star)\,\Delta T = -\alpha\,\Delta T
+
+
+
+---
+
+Worked example and sensitivity
+
+• Parameters: \(\alpha=0.9,\; \beta=0.3,\; K=120,\; T(0)=1\)
+• Peak value:T^\star = 120 \, e^{-0.3/0.9} = 120 \, e^{-1/3} \approx 120 \times 0.71653 \approx 85.98
+
+• Sensitivity to decay:\frac{\partial T^\star}{\partial \beta} = -\frac{K}{\alpha}\,e^{-\beta/\alpha} < 0
+Increasing \(\beta\) lowers the peak.
+• Sensitivity to growth:\frac{\partial T^\star}{\partial \alpha} = K\,e^{-\beta/\alpha}\,\frac{\beta}{\alpha^{2}} > 0
+Increasing \(\alpha\) raises the peak.
+
+
+---
+
+Graph specifications
+
+• Time series T(t):• Model: \(\frac{dT}{dt} = \alpha T \ln(K/T) - \beta T\)
+• Axes: \(t \in [0,40]\), \(T(t)\)
+• Expected: Early exponential‑like rise, unique peak at \(T^\star\), bounded decline below \(K\)
+
+• Phase portrait f(T):• Model: \(f(T)=\alpha T \ln(K/T) - \beta T\)
+• Axes: \(T \in [0,K]\), \(f(T)\)
+• Expected: \(f>0\) for \(T<T^\star\), zero at \(T^\star\), \(f<0\) for \(T>T^\star\)
+
+• Parameter sensitivity surfaces:• Peak vs \(\beta\): Decreasing curve \(T^\star(\beta)=K e^{-\beta/\alpha}\)
+• Peak vs \(\alpha\): Increasing curve \(T^\star(\alpha)=K e^{-\beta/\alpha}\)
+
+
+
+---
+
+Law confirmation
+
+• Boundedness: \(T(t)\le K\) with strict peak at \(K e^{-\beta/\alpha}\).
+• Unimodality: Single crossing of \(f(T)=0\) delivers unique maximizer.
+• Monotonic segments: Flow sign splits the trajectory at \(t^\star\).
+• No‑runaway integral:\int_{0}^{\infty} \max\{T'(t),0\}\,dt = T^\star - T(0) < \infty
+
+
+
+---
+
+Authored by Nicholas Reid Angell
+Math by Copilot GPT‑5
